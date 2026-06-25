@@ -1,0 +1,78 @@
+name: Build FileOrderCheck
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'projects/FileOrderCheck/**'
+  workflow_dispatch:
+
+jobs:
+  # ── macOS (arm64) ──────────────────────────────────────────────────────────
+  build-macos:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system deps
+        run: brew install tesseract poppler
+
+      - name: Install Python deps
+        run: pip install pyinstaller flask pytesseract pdf2image Pillow rapidfuzz
+        working-directory: projects/FileOrderCheck
+
+      - name: Build
+        run: pyinstaller FileOrderCheck.spec
+        working-directory: projects/FileOrderCheck
+
+      - name: Zip app
+        run: zip -r FileOrderCheck-mac.zip FileOrderCheck.app
+        working-directory: projects/FileOrderCheck/dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FileOrderCheck-mac
+          path: projects/FileOrderCheck/dist/FileOrderCheck-mac.zip
+          retention-days: 30
+
+  # ── Windows ────────────────────────────────────────────────────────────────
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Tesseract
+        run: choco install tesseract --yes
+
+      - name: Download and locate Poppler
+        shell: pwsh
+        run: |
+          $url = "https://github.com/oschwartz10612/poppler-windows/releases/download/v24.08.0-0/Release-24.08.0-0.zip"
+          Invoke-WebRequest -Uri $url -OutFile "$env:TEMP\poppler.zip"
+          Expand-Archive "$env:TEMP\poppler.zip" -DestinationPath "$env:GITHUB_WORKSPACE\poppler_release"
+          $popplerBin = (Get-ChildItem -Recurse -Filter pdftoppm.exe "$env:GITHUB_WORKSPACE\poppler_release" | Select-Object -First 1).DirectoryName
+          Write-Output "POPPLER_BIN=$popplerBin" >> $env:GITHUB_ENV
+
+      - name: Install Python deps
+        run: pip install pyinstaller flask pytesseract pdf2image Pillow rapidfuzz
+        working-directory: projects/FileOrderCheck
+
+      - name: Build
+        run: pyinstaller FileOrderCheck-windows.spec
+        working-directory: projects/FileOrderCheck
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FileOrderCheck-windows
+          path: projects/FileOrderCheck/dist/FileOrderCheck.exe
+          retention-days: 30
