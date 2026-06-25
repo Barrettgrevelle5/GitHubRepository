@@ -1,0 +1,67 @@
+{
+  "file": "CCSR 1302 Herrera FF.pdf",
+  "pages": 57,
+  "run": "2026-06-16T00:00:00Z",
+  "app_build": "main@3cd5300 (working tree)",
+  "verdict": "FAIL",
+  "method": "direct PDF visual read vs ComplianceForms templates; no OCR/app code",
+  "profile_input_contract": {
+    "program": null,
+    "income": ["employed", "zero_income", "non_employed", "tips", "child_support"],
+    "conditions": ["marital_separation", "assets_under_50k"]
+  },
+  "tester_present": [
+    {"id": "household_cert", "name": "Household Certification", "page": 6, "weak": true, "note": "lives inside TIC p6 (Household Certification & Signatures block)"},
+    {"id": "tic", "name": "Tenant Income Certification", "page": 6, "weak": false, "spans": "6-8"},
+    {"id": "release_consent", "name": "Tenant Release and Consent", "page": 10, "weak": false},
+    {"id": "rights", "name": "Tenant Rights and Resource Acknowledgment", "page": 11, "weak": false},
+    {"id": "application", "name": "Application", "page": 12, "weak": false, "spans": "12-15; co-applicant app 16-19"},
+    {"id": "supp_app", "name": "Supplemental Application", "page": 20, "weak": false},
+    {"id": "student_eligibility", "name": "Certification of Student Eligibility", "page": 21, "weak": false},
+    {"id": "special_needs", "name": "Special Needs Certification", "page": 22, "weak": false},
+    {"id": "income_calc", "name": "Income Calculation Worksheet", "page": 23, "weak": false},
+    {"id": "zero_income", "name": "Certification of Zero Income", "page": 24, "weak": false},
+    {"id": "non_employed", "name": "Non-Employed Certification", "page": 25, "weak": false},
+    {"id": "employment_verif", "name": "Employment Verification or Paystubs", "page": 26, "weak": false, "spans": "26-30"},
+    {"id": "child_support_cert", "name": "Child Support / Alimony Certification", "page": 33, "weak": false},
+    {"id": "asset_cert", "name": "Asset Certification (under $50,000)", "page": 34, "weak": false},
+    {"id": "tenant_selection_plan", "name": "Tenant Selection Plan", "page": 43, "weak": false}
+  ],
+  "tester_non_documents_or_untracked": [
+    {"page": 1, "what": "auditor approval email (Karen A. Graham Consulting)"},
+    {"page": 2, "what": "Unit Change Form"},
+    {"page": 3, "what": "FILE APPROVAL CHECKLIST cover"},
+    {"page": 4, "what": "Rental Information Schedule"},
+    {"page": 5, "what": "LURA Appendix A / Unit Mix"},
+    {"page": 9, "what": "Previous Year's Income Certification - BOND (untracked)"},
+    {"page": 31, "what": "Telephone Verification/Clarification Record (bonus)"},
+    {"page": 32, "what": "Telephone Verification/Clarification Record (first paystub date)"},
+    {"page": 35, "what": "UFCU Bank Statement 7pp (35-41) - untracked or app-missed"},
+    {"page": 42, "what": "applicant asset-clarification email"},
+    {"page": 50, "what": "TAA Apartment Lease Contract 6pp (50-55)"},
+    {"page": 56, "what": "TAA Lease Addendum for Affordable Housing 2pp (56-57)"}
+  ],
+  "tester_out_of_order": [],
+  "tester_missing": [
+    {"id": "marital_sep", "name": "Marital Separation Certification", "reason": "profile condition marital_separation -> required; no form found; checklist box unchecked"},
+    {"id": "tips", "name": "Tips and Commissions Affidavit", "reason": "profile income tips -> required; no form found; checklist box unchecked; supp app marks Tips No"}
+  ],
+  "mismatches": [
+    {"id": "marital_sep", "category": "APP_FALSE_POSITIVE", "app": {"page": 12, "weak": true}, "tester": "not present", "page": 12, "note": "p12 is the Application; no Marital Separation form exists"},
+    {"id": "tips", "category": "APP_FALSE_POSITIVE", "app": {"page": 24, "weak": false}, "tester": "not present", "page": 24, "note": "p24 is the Zero Income Certification; no Tips affidavit exists"},
+    {"id": "payment_history", "category": "APP_FALSE_POSITIVE", "app": {"page": 33, "weak": true}, "tester": "not present", "page": 33, "note": "weak cross-ref to 'payment history' on Child Support form; not required"},
+    {"id": "employment_verif", "category": "PAGE_DISAGREEMENT", "app": {"page": 31, "weak": false}, "tester": {"page": 26}, "note": "p31 is a Telephone/Clarification Record; real employment-verif worksheet+paystubs start p26"},
+    {"id": "special_needs", "category": "APP_FALSE_NEGATIVE", "app": "not reported", "tester": {"page": 22}, "note": "Special Needs Certification present p22, checklist box checked, app missed it"},
+    {"id": "marital_sep", "category": "ORDER_DISAGREEMENT", "note": "app out-of-order entry downstream of its false positive"},
+    {"id": "tips", "category": "ORDER_DISAGREEMENT", "note": "app out-of-order entry downstream of its false positive"},
+    {"id": "marital_sep", "category": "MISSING_DISAGREEMENT", "note": "required but absent; app masked as present"},
+    {"id": "tips", "category": "MISSING_DISAGREEMENT", "note": "required but absent; app masked as present"}
+  ],
+  "mismatch_counts": {"FALSE_POS": 3, "FALSE_NEG": 1, "PAGE": 1, "ORDER": 2, "MISSING": 2, "AMBIG": 0, "UNCERTAIN": 0},
+  "tic_false_positive_guard": {
+    "p1_email_reported_as_tic": false,
+    "real_tic_detected_page": 6,
+    "result": "PASS - app correctly did NOT match the p1 auditor email and detected the real TIC on p6"
+  },
+  "app_answer_consumed": "tests/appanswers/CCSR 1302 Herrera FF.appanswer.json"
+}

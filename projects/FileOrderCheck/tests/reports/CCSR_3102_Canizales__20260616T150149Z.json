@@ -1,0 +1,73 @@
+{
+  "file": "CCSR 3102 Canizales FF.pdf",
+  "pages": 54,
+  "run": "2026-06-16T15:01:49Z",
+  "app_build": "unknown",
+  "verdict": "REVIEW",
+  "method": "direct visual PDF read (no OCR, no app code), templates in ComplianceForms/, roster/order from File Checklist.xlsx",
+  "tic_regression_check": {
+    "false_positive_on_cover_email_avoided": true,
+    "app_tic_page": 5,
+    "tester_tic_page": 5,
+    "note": "p1 auditor email 'TIC & Lease / FYQA review' correctly ignored; real Income Certification form on p5 (p5-7)."
+  },
+  "summary": {
+    "present": { "app": 14, "tester": 14, "agree": 14 },
+    "out_of_order": { "app": 0, "tester": 0, "agree": 0 },
+    "missing": { "app": 0, "tester": 0, "agree": 0 },
+    "mismatch_counts": {
+      "APP_FALSE_POSITIVE": 0,
+      "APP_FALSE_NEGATIVE": 0,
+      "PAGE_DISAGREEMENT": 2,
+      "ORDER_DISAGREEMENT": 0,
+      "MISSING_DISAGREEMENT": 0,
+      "AMBIGUOUS_PAGE": 0,
+      "TESTER_UNCERTAIN": 0
+    }
+  },
+  "profile": {
+    "program": "BOND",
+    "income": ["employed", "child_support"],
+    "conditions": ["special_needs", "assets_under_50k"]
+  },
+  "documents": [
+    { "id": "household_cert", "name": "Household Certification", "required": true, "app": { "page": 5, "weak": true }, "tester": { "page": 5, "evidence": "HOUSEHOLD CERTIFICATION & SIGNATURES section of the TIC form; no standalone template exists" }, "match": true, "category": null },
+    { "id": "tic", "name": "Tenant Income Certification", "required": true, "app": { "page": 5, "weak": false }, "tester": { "page": 5, "evidence": "INCOME CERTIFICATION form, p5-7" }, "match": true, "category": null },
+    { "id": "release_consent", "name": "Tenant Release and Consent", "required": true, "app": { "page": 9, "weak": false }, "tester": { "page": 9, "evidence": "TDHCA Release and Consent Form" }, "match": true, "category": null },
+    { "id": "rights", "name": "Tenant Rights and Resource Acknowledgment", "required": true, "app": { "page": 10, "weak": false }, "tester": { "page": 10, "evidence": "TDHCA Tenant Rights & Resources Guide Acknowledgement" }, "match": true, "category": null },
+    { "id": "application", "name": "Application", "required": true, "app": { "page": 11, "weak": false }, "tester": { "page": 11, "evidence": "TAA Rental Application p11-14" }, "match": true, "category": null },
+    { "id": "supp_app", "name": "Supplemental Application", "required": true, "app": { "page": 15, "weak": false }, "tester": { "page": 15, "evidence": "TAA Supplemental Rental Application 25-W" }, "match": true, "category": null },
+    { "id": "student_eligibility", "name": "Certification of Student Eligibility", "required": true, "app": { "page": 16, "weak": false }, "tester": { "page": 16, "evidence": "TDHCA Cert of Student Eligibility HTC/BOND" }, "match": true, "category": null },
+    { "id": "special_needs", "name": "Special Needs Certification", "required": true, "app": { "page": 17, "weak": false }, "tester": { "page": 17, "evidence": "TDHCA Special Needs Certification" }, "match": true, "category": null },
+    { "id": "income_calc", "name": "Income Calculation Worksheet", "required": true, "app": { "page": 18, "weak": false }, "tester": { "page": 18, "evidence": "Income Calculation Summary" }, "match": true, "category": null },
+    { "id": "employment_verif", "name": "Employment Verification or Paystubs", "required": true, "app": { "page": 23, "weak": false }, "tester": { "page": 20, "evidence": "Texas Children's Payment Statement (paystub); YTD calc cover p19; paystubs p20-22,24. p23 is a Clarification Record, not a paystub." }, "match": false, "category": "PAGE_DISAGREEMENT", "order_impact": false },
+    { "id": "child_support_cert", "name": "Child Support / Alimony Certification", "required": true, "app": { "page": 25, "weak": false }, "tester": { "page": 25, "evidence": "Bonner Carrington Child Support/Alimony Certification" }, "match": true, "category": null },
+    { "id": "payment_history", "name": "Payment History or AG 9L001", "required": true, "app": { "page": 25, "weak": true }, "tester": { "page": 26, "evidence": "OAG/Ken Paxton Child Support Income Verification Report, form 9L001 (p25 is the Child Support Cert, a different doc)" }, "match": false, "category": "PAGE_DISAGREEMENT", "order_impact": false },
+    { "id": "asset_cert", "name": "Asset Certification (under $50,000)", "required": true, "app": { "page": 28, "weak": false }, "tester": { "page": 28, "evidence": "TDHCA Asset Certification of Net Family Assets" }, "match": true, "category": null },
+    { "id": "tenant_selection_plan", "name": "Tenant Selection Plan", "required": true, "app": { "page": 40, "weak": false }, "tester": { "page": 40, "evidence": "Bonner Carrington Tenant Selection Plan p40-46" }, "match": true, "category": null }
+  ],
+  "out_of_order": { "app": [], "tester": [] },
+  "missing": { "app": [], "tester": [] },
+  "non_document_pages": [1, 2, 3, 4, 8, 19, 23, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 47, 48, 49, 50, 51, 52, 53, 54],
+  "non_document_notes": {
+    "1": "auditor approval email (TIC cross-reference trap, correctly ignored)",
+    "2": "FILE APPROVAL CHECKLIST cover",
+    "3": "Rental Information Schedule",
+    "4": "Unit Mix / LURA Appendix A",
+    "8": "Previous Year's Income Certification Form-Bond (real form, not a tracked roster item; not reported by either side)",
+    "19": "paystub YTD calculation cover sheet",
+    "23": "Clarification Record (app mis-assigned employment_verif here)",
+    "27": "Outlook child support clarification email",
+    "29": "Velocity CU fax cover",
+    "30": "Velocity CU VOD request email",
+    "31": "Verification of Deposit",
+    "32-36": "Cash App / Apple Cash / Venmo bank statements",
+    "37": "Apple Cash clarification email",
+    "38": "Account verification email + Charles Schwab Roth IRA statement",
+    "39": "Roth IRA verification email",
+    "47-52": "TAA Apartment Lease Contract",
+    "53-54": "TAA Lease Addendum for affordable-housing units"
+  },
+  "app_answer_consumed": "tests/appanswers/CCSR 3102 Canizales FF.appanswer.json",
+  "pages_unreadable": []
+}

@@ -1,0 +1,100 @@
+{
+  "file": "CCSR 1302 Herrera FF.pdf",
+  "pages": 57,
+  "run": "2026-06-18T16:49:28Z",
+  "app_build": "3cd5300",
+  "scope": "partial (docs: marital_sep, payment_history, student_eligibility, special_needs)",
+  "verdict": "REVIEW (partial scope)",
+  "independence": {
+    "method": "direct PDF page images via pdftoppm, no OCR",
+    "ocr_consumed": false,
+    "app_detection_code_consumed": false,
+    "templates_loaded_once": [
+      "Marital Separation Certification 2.14.2025.pdf",
+      "Child Support-Alimony Certification Effective 5.28.2024.pdf",
+      "Certification of Student Eligibility 3.1.2024.pdf",
+      "TDHCA Special Needs Certification.pdf"
+    ]
+  },
+  "p3_checkbox_state": {
+    "marital_separation_certification": "unchecked",
+    "child_support_alimony_certification": "checked",
+    "payment_history_or_ag_9l001": "unchecked",
+    "court_order": "unchecked",
+    "certification_of_student_eligibility": "checked",
+    "student_verification": "unchecked",
+    "special_needs_certification": "checked"
+  },
+  "p33_child_support_cert": {
+    "section1_biological_parents_resident_child": "filled (David Herrera)",
+    "section2_court_ordered_support": "not selected",
+    "section3_no_court_order": "not selected",
+    "implication": "no court-ordered support -> payment_history not required"
+  },
+  "documents": [
+    {
+      "id": "marital_sep",
+      "required_box": false,
+      "tester": { "present": false, "page": null },
+      "app": { "required": false, "present": false, "advisory": false },
+      "agree": true,
+      "category": null
+    },
+    {
+      "id": "payment_history",
+      "required_box": false,
+      "tester": { "present": false, "page": null },
+      "app": { "required": false, "present": false, "advisory": false },
+      "agree": true,
+      "category": null
+    },
+    {
+      "id": "student_eligibility",
+      "required_box": true,
+      "tester": { "present": true, "page": 21 },
+      "app": { "required": true, "present": true, "page": 21, "weak": false },
+      "agree": true,
+      "category": null
+    },
+    {
+      "id": "special_needs",
+      "required_box": true,
+      "tester": { "present": true, "page": 22, "should_be_required": true },
+      "app": { "required": false, "present": true, "page": 22, "via": "direction2_advisory" },
+      "agree": false,
+      "category": "REQUIRED_NESS_MISMATCH",
+      "severity": "REVIEW",
+      "note": "App sees doc present (advisory), so not a presence false-negative. App's p3 checkbox parser missed the checked Special Needs box (OCR dropped-glyph). Required-ness gap only; doc is present so cannot be missing."
+    }
+  ],
+  "summary": {
+    "present_app": 2,
+    "present_tester": 2,
+    "present_agree": 2,
+    "missing_app": 0,
+    "missing_tester": 0,
+    "required_ness_disagreements": 1,
+    "mismatches": {
+      "false_positive": 0,
+      "false_negative": 0,
+      "page": 0,
+      "order": 0,
+      "missing": 0,
+      "ambiguous": 0,
+      "uncertain": 0,
+      "required_ness_review": 1
+    }
+  },
+  "three_fix_confirmation": {
+    "marital_sep_leading_1_misread": "fix holds (box unchecked, form absent)",
+    "payment_history_requires_court_ordered": "fix holds (p33 Section 2 not selected; box unchecked)",
+    "student_eligibility_checked_box_detected": "fix holds (box checked, form present p21, app required+present)"
+  },
+  "reproducibility": {
+    "render": "pdftoppm 120dpi default; p3 and p33 escalated to 300dpi + cropped to read checkbox state",
+    "pages_read": [3, 21, 22, 33],
+    "image_detail": "low/standard",
+    "escalations": ["p3 -> 300dpi crop", "p33 -> 300dpi crop"],
+    "app_answer_file": "tests/appanswers/CCSR 1302 Herrera FF.appanswer.json"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "pdf": "CCSR 3205 Aldridge Move In.pdf",
+  "pages": 38,
+  "checklist_page": 1,
+  "profile": {
+    "program": "HTC",
+    "income": [
+      "employed",
+      "child_support"
+    ],
+    "conditions": [
+      "assets_under_50k",
+      "special_needs"
+    ]
+  },
+  "present": [
+    {
+      "id": "household_cert",
+      "name": "Household Certification",
+      "page": 4,
+      "weak": true
+    },
+    {
+      "id": "tic",
+      "name": "Tenant Income Certification",
+      "page": 4,
+      "weak": false
+    },
+    {
+      "id": "release_consent",
+      "name": "Tenant Release and Consent",
+      "page": 8,
+      "weak": false
+    },
+    {
+      "id": "rights",
+      "name": "Tenant Rights and Resource Acknowledgment",
+      "page": 9,
+      "weak": false
+    },
+    {
+      "id": "application",
+      "name": "Application",
+      "page": 10,
+      "weak": false
+    },
+    {
+      "id": "supp_app",
+      "name": "Supplemental Application",
+      "page": 14,
+      "weak": false
+    },
+    {
+      "id": "student_eligibility",
+      "name": "Certification of Student Eligibility",
+      "page": 15,
+      "weak": false
+    },
+    {
+      "id": "special_needs",
+      "name": "Special Needs Certification",
+      "page": 16,
+      "weak": false
+    },
+    {
+      "id": "income_calc",
+      "name": "Income Calculation Worksheet",
+      "page": 17,
+      "weak": false
+    },
+    {
+      "id": "employment_verif",
+      "name": "Employment Verification or Paystubs",
+      "page": 20,
+      "weak": false
+    },
+    {
+      "id": "child_support_cert",
+      "name": "Child Support / Alimony Certification",
+      "page": 26,
+      "weak": false
+    },
+    {
+      "id": "payment_history",
+      "name": "Payment History or AG 9L001",
+      "page": 27,
+      "weak": false
+    },
+    {
+      "id": "asset_cert",
+      "name": "Asset Certification (under $50,000)",
+      "page": 28,
+      "weak": false
+    },
+    {
+      "id": "tenant_selection_plan",
+      "name": "Tenant Selection Plan",
+      "page": 32,
+      "weak": false
+    }
+  ],
+  "outOfOrder": [],
+  "missing": [],
+  "advisories": {
+    "direction1": [],
+    "direction2": []
+  }
+}

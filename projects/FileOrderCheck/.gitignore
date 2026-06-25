@@ -1,0 +1,31 @@
+# Per-PDF OCR debug dumps — raw OCR text (PII). Local-only, never commit.
+ocr_debug/
+
+# OCR debug log — raw OCR text (PII), same category as ocr_debug/. Local-only.
+tests/ocr.log
+
+# Real applicant case-file PDFs — tenant PII (SSNs etc.). Never commit.
+# Tests use the tests/appanswers/*.ocr.json fixtures instead, not these PDFs.
+CaseFiles_Compliance/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Office temp lock files
+~$*
+
+# macOS Finder metadata
+.DS_Store
+
+# Local Claude Code settings (personal, not project source)
+.claude/settings.local.json
+
+# Superseded prior doc — left on disk, kept out of git for now
+oldclaude.md
+
+# Office-distribution build output (make_release.command) — generated folders/zips
+dist/
+
+# PyInstaller intermediate build output (build_app.command / FileOrderCheck.spec)
+build/

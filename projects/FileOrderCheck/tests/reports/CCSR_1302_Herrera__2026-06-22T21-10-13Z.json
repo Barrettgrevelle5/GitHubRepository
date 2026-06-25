@@ -1,0 +1,61 @@
+{
+  "file": "CCSR 1302 Herrera FF.pdf",
+  "pages": 57,
+  "run": "2026-06-22T21-10-13Z",
+  "scope": "full",
+  "verdict": "FAIL",
+  "method": "direct-pdf-image-read; no OCR; no app detection code",
+  "image_detail": "standard/low; no page escalated",
+  "app_answer_consumed": "/tmp/herrera_app_answer.json",
+  "required_set_tester": [
+    "application","supp_app","household_cert","tic","release_consent","rights",
+    "income_calc","tenant_selection_plan","minor_children_docs","employment_verif",
+    "zero_income","non_employed","asset_cert"
+  ],
+  "required_set_app": [
+    "application","asset_cert","zero_income","employment_verif","household_cert",
+    "income_calc","minor_children_docs","non_employed","supp_app","tic",
+    "release_consent","rights","tenant_selection_plan"
+  ],
+  "required_set_agreement": "identical (13/13)",
+  "present_map_tester": {
+    "household_cert": 6, "tic": 6, "release_consent": 10, "rights": 11,
+    "application": 12, "supp_app": 20, "student_eligibility": 21, "special_needs": 22,
+    "income_calc": 23, "zero_income": 24, "non_employed": 25, "employment_verif": 27,
+    "clarification_record": 31, "child_support_cert": 33, "asset_cert": 34,
+    "bank_statement": 35, "tenant_selection_plan": 43
+  },
+  "non_roster_pages": {
+    "1": "Karen A Graham auditor approval letter",
+    "2": "Bonner Carrington Unit Change Form",
+    "3": "FILE APPROVAL CHECKLIST cover (audit-only)",
+    "4-5": "Rental Information Schedule (RIS)",
+    "9": "Previous Year's Income Certification (BOND)",
+    "42": "asset-clarification email (Yvan->Angel)",
+    "50-55": "TAA Apartment Lease Contract",
+    "56-57": "TAA Lease Addendum (affordable housing)"
+  },
+  "out_of_order": { "app": [], "tester": [], "agree": true },
+  "missing": {
+    "app": ["minor_children_docs"],
+    "tester": ["minor_children_docs"],
+    "agree": true
+  },
+  "mismatches": [
+    {"doc":"social_security","page":4,"app":"present (weak, ssi)","tester":"RIS page; not a document","category":"APP_FALSE_POSITIVE","strong":false},
+    {"doc":"student_financial","page":20,"app":"present (weak, financial assist)","tester":"Supplemental App grid line item","category":"APP_FALSE_POSITIVE","strong":false},
+    {"doc":"mortgage","page":20,"app":"present (weak, mortgage)","tester":"Supplemental App asset grid line","category":"APP_FALSE_POSITIVE","strong":false},
+    {"doc":"pension_verif","page":24,"app":"present (STRONG, pension)","tester":"Zero Income Cert enumeration 1.e","category":"APP_FALSE_POSITIVE","strong":true},
+    {"doc":"self_employ_affidavit","page":24,"app":"present (weak, self employ)","tester":"Zero Income Cert enumeration 1.i","category":"APP_FALSE_POSITIVE","strong":false},
+    {"doc":"rental_worksheet","page":24,"app":"present (STRONG, rental income)","tester":"Zero Income Cert enumeration 1.c","category":"APP_FALSE_POSITIVE","strong":true},
+    {"doc":"live_in_aide_affidavit","page":45,"app":"present (weak, live in aide)","tester":"Tenant Selection Plan p3 prose","category":"APP_FALSE_POSITIVE","strong":false}
+  ],
+  "mismatch_counts": {"FALSE_POS":7,"FALSE_NEG":0,"PAGE":0,"ORDER":0,"MISSING":0,"AMBIG":0,"UNCERTAIN":0},
+  "paystub_stress_test": "PASS — employment_verif on real paystub p27, not income-calc cover p26 or clarification records p31-32",
+  "clarification_split": "OK — two real TDHCA Telephone Verification/Clarification Records (p31 bonus, p32 start-date) both correctly identified as the clarification doc; not confused with the Bonner-Carrington 'Clarification Record' template",
+  "checklist_cover_page": {"page":3,"legible":true,"misread_detected":false},
+  "observations": [
+    "household_cert is a section header on the TIC (p6), not a standalone form; app+tester agree present at p6",
+    "BOND asset-verification: RIS p5 says all BOND units verify assets at move-in; bank stmt filed (p35-41) but tree Q5.0-N requires only Asset Cert. App correctly does not require bank_statement. Possible tree gap."
+  ]
+}

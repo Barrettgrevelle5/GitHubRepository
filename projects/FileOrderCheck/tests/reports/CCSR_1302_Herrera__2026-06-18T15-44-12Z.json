@@ -1,0 +1,105 @@
+{
+  "file": "CCSR 1302 Herrera FF.pdf",
+  "pages": 57,
+  "run": "2026-06-18T15:44:12Z",
+  "scope": "full",
+  "verdict": "REVIEW",
+  "method": "direct-pdf-read; no OCR; templates from ComplianceForms loaded once",
+  "image_detail": "low/standard for all pages; no escalation needed",
+  "summary": {
+    "present": { "app": 13, "tester": 15, "agree": 13 },
+    "out_of_order": { "app": 0, "tester": 0, "agree": true },
+    "missing": { "app": 2, "tester": 0, "agree": 0 },
+    "mismatches": { "total": 4, "false_pos": 0, "false_neg": 0, "page": 1, "order": 0, "missing": 2, "ambiguous": 0, "uncertain": 0 }
+  },
+  "tester_present": [
+    { "id": "household_cert", "page": 6 },
+    { "id": "tic", "page": 6 },
+    { "id": "release_consent", "page": 10 },
+    { "id": "rights", "page": 11 },
+    { "id": "application", "page": 12 },
+    { "id": "supp_app", "page": 20 },
+    { "id": "student_eligibility", "page": 21 },
+    { "id": "special_needs", "page": 22 },
+    { "id": "income_calc", "page": 23 },
+    { "id": "zero_income", "page": 24 },
+    { "id": "non_employed", "page": 25 },
+    { "id": "employment_verif", "page": 26 },
+    { "id": "child_support_cert", "page": 33 },
+    { "id": "asset_cert", "page": 34 },
+    { "id": "bank_statement", "page": 35 },
+    { "id": "tenant_selection_plan", "page": 43 }
+  ],
+  "tester_out_of_order": [],
+  "tester_missing": [],
+  "non_roster_pages": {
+    "1": "Karen A Graham Consulting approval/transmittal letter",
+    "2": "Unit Change Form (Bonner Carrington)",
+    "3": "FILE APPROVAL CHECKLIST cover page",
+    "4-5": "Rental Information Schedule / LURA Appendix A",
+    "9": "Previous Year's Income Certification Form - Bond Program",
+    "31-32": "TDHCA Telephone Verification / Clarification Records",
+    "42": "Bonner Carrington clarification email (Faster Payments)",
+    "50-55": "TAA Apartment Lease Contract (6 pp)",
+    "56-57": "TAA Lease Addendum for Affordable Housing Programs (2 pp)"
+  },
+  "mismatches": [
+    {
+      "id": "employment_verif",
+      "category": "PAGE_DISAGREEMENT",
+      "app_page": 31,
+      "tester_page": 26,
+      "evidence": "App p31 is a TDHCA Telephone Verification/Clarification Record (bonus structure); actual income verification is the paystub-calc sheet p26 + Baker Triangle paystubs p27-30. Both present; no order impact."
+    },
+    {
+      "id": "marital_sep",
+      "category": "MISSING_DISAGREEMENT",
+      "app": "required + missing (advisory direction1)",
+      "tester": "absent from PDF; p3 checklist box UNCHECKED; not required",
+      "evidence": "No Marital Separation Certification form in 57 pages; checklist marital-separation box unchecked. App mis-derived marital_separation as a required condition."
+    },
+    {
+      "id": "payment_history",
+      "category": "MISSING_DISAGREEMENT",
+      "app": "required + missing",
+      "tester": "absent from PDF; p3 checklist box UNCHECKED; not required",
+      "evidence": "No AG 9L001 / Office of Attorney General payment-history doc anywhere. p33 Child Support/Alimony Cert: section 2 (court-ordered support) blank, no court order -> payment history not triggered. Checklist Payment History box unchecked."
+    },
+    {
+      "id": "student_eligibility",
+      "category": "REQUIREDNESS_MISMATCH",
+      "app": "direction2 advisory (present-but-not-required), p21, not in present[]",
+      "tester": "real document p21; p3 checklist box CHECKED -> required",
+      "evidence": "Presence agrees; app required-ness under-declares a checked-box doc."
+    },
+    {
+      "id": "special_needs",
+      "category": "REQUIREDNESS_MISMATCH",
+      "app": "direction2 advisory (present-but-not-required), p22, not in present[]",
+      "tester": "real document p22; p3 checklist box CHECKED -> required",
+      "evidence": "Presence agrees; app required-ness under-declares a checked-box doc."
+    }
+  ],
+  "checklist_p3_box_state": {
+    "marital_separation": "unchecked",
+    "payment_history_ag9l001": "unchecked",
+    "court_order": "unchecked",
+    "child_support_alimony": "checked",
+    "student_eligibility": "checked",
+    "special_needs": "checked",
+    "under_50k_asset_cert": "checked",
+    "bank_statement_or_bank_verif": "checked",
+    "tenant_selection_plan": "checked"
+  },
+  "app_phantom_advisory_noted": {
+    "profit_loss_p52": "p52 is page 3 of the TAA Apartment Lease Contract, not a Profit and Loss statement; app direction2 advisory is a phantom keyword hit. Advisory-only, no verdict impact."
+  },
+  "reproducibility": {
+    "pdf_page_images_read": 57,
+    "template_page_images_read": 15,
+    "total_page_images": 72,
+    "templates_reloaded_midrun": false,
+    "escalated_detail_pages": [],
+    "app_answer_consumed": "tests/appanswers/CCSR 1302 Herrera FF.appanswer.json"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "pdf": "CCSR 3205 Aldridge Move In.pdf",
+  "pages": 38,
+  "run": "2026-06-16T00:00:00Z",
+  "app_build": "main@3cd5300",
+  "verdict": "REVIEW",
+  "profile": {
+    "program": "HTC",
+    "income": ["employed", "child_support"],
+    "conditions": ["assets_under_50k", "special_needs"]
+  },
+  "summary": {
+    "present": {"app": 14, "tester": 14, "agree_presence": 14},
+    "out_of_order": {"app": 0, "tester": 0},
+    "missing": {"app": 0, "tester": 0},
+    "mismatches": {"total": 2, "false_pos": 0, "false_neg": 0, "page": 2, "order": 0, "missing": 0, "ambiguous": 0, "uncertain": 0}
+  },
+  "tic_false_positive_check": {
+    "app_reported_tic_on_cover_or_email": false,
+    "real_tic_form_detected": true,
+    "tic_form_pages": "4-6",
+    "result": "PASS"
+  },
+  "tester_present_map": [
+    {"id": "household_cert", "name": "Household Certification", "page": 4},
+    {"id": "tic", "name": "Tenant Income Certification", "page": 4, "spans": "4-6"},
+    {"id": "release_consent", "name": "Tenant Release and Consent", "page": 8},
+    {"id": "rights", "name": "Tenant Rights and Resource Acknowledgment", "page": 9},
+    {"id": "application", "name": "Application", "page": 10, "spans": "10-13"},
+    {"id": "supp_app", "name": "Supplemental Application", "page": 14},
+    {"id": "student_eligibility", "name": "Certification of Student Eligibility", "page": 15},
+    {"id": "special_needs", "name": "Special Needs Certification", "page": 16},
+    {"id": "income_calc", "name": "Income Calculation Worksheet", "page": 17},
+    {"id": "employment_verif", "name": "Employment Verification or Paystubs", "page": 19, "spans": "19-25"},
+    {"id": "child_support_cert", "name": "Child Support / Alimony Certification", "page": 26},
+    {"id": "payment_history", "name": "Payment History or AG 9L001", "page": 27},
+    {"id": "asset_cert", "name": "Asset Certification (under $50,000)", "page": 28},
+    {"id": "tenant_selection_plan", "name": "Tenant Selection Plan", "page": 32, "spans": "32-38"}
+  ],
+  "tester_out_of_order": [],
+  "tester_missing": [],
+  "non_document_pages": [
+    {"pages": "1", "what": "FILE APPROVAL CHECKLIST cover", "correctly_excluded_by_app": true},
+    {"pages": "2-3", "what": "Rental Information Schedule / Unit Mix / LURA Appendix A"},
+    {"pages": "7", "what": "Previous Year's Income Certification Form - Bond Program (not required for HTC profile)"},
+    {"pages": "18", "what": "Clarification Record (self-affidavit)"},
+    {"pages": "23-25", "what": "Sedgwick/Tesla FMLA-STD leave cover + APPROVAL letter"},
+    {"pages": "29", "what": "A+ FCU Outlook secure-message email", "correctly_excluded_by_app": true},
+    {"pages": "30-31", "what": "TDHCA Asset Verification Form (A+ FCU bank verification)"}
+  ],
+  "mismatches": [
+    {
+      "id": "payment_history",
+      "name": "Payment History or AG 9L001",
+      "category": "PAGE_DISAGREEMENT",
+      "app_page": 26,
+      "app_weak": true,
+      "tester_page": 27,
+      "note": "AG 9L001 form (OAG/Ken Paxton CHILD SUPPORT INCOME VERIFICATION REPORT, footer id 9L001) is on p27. App weak-hit on p26 (Child Support Cert page references 'payment history'). No order/missing impact.",
+      "forces_fail": false
+    },
+    {
+      "id": "employment_verif",
+      "name": "Employment Verification or Paystubs",
+      "category": "PAGE_DISAGREEMENT",
+      "app_page": 20,
+      "tester_page": 19,
+      "note": "Employment-verif section starts at the income-verification worksheet sheet (p19); app anchored on first Tesla paystub (p20). Same section; one-page boundary difference. No order/missing impact.",
+      "forces_fail": false
+    }
+  ],
+  "app_answer_consumed": "tests/appanswers/CCSR 3205 Aldridge Move In.appanswer.json",
+  "method": "Direct visual PDF read (Read tool) vs ComplianceForms/ templates and File Checklist.xlsx roster. No OCR, no app code, no *.ocr.json."
+}

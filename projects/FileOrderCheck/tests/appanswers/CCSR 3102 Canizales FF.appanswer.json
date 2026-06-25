@@ -1,0 +1,108 @@
+{
+  "pdf": "CCSR 3102 Canizales FF.pdf",
+  "pages": 54,
+  "checklist_page": 2,
+  "profile": {
+    "program": "BOND",
+    "income": [
+      "employed",
+      "child_support"
+    ],
+    "conditions": [
+      "special_needs",
+      "assets_under_50k"
+    ]
+  },
+  "present": [
+    {
+      "id": "household_cert",
+      "name": "Household Certification",
+      "page": 5,
+      "weak": true
+    },
+    {
+      "id": "tic",
+      "name": "Tenant Income Certification",
+      "page": 5,
+      "weak": false
+    },
+    {
+      "id": "release_consent",
+      "name": "Tenant Release and Consent",
+      "page": 9,
+      "weak": false
+    },
+    {
+      "id": "rights",
+      "name": "Tenant Rights and Resource Acknowledgment",
+      "page": 10,
+      "weak": false
+    },
+    {
+      "id": "application",
+      "name": "Application",
+      "page": 11,
+      "weak": false
+    },
+    {
+      "id": "supp_app",
+      "name": "Supplemental Application",
+      "page": 15,
+      "weak": false
+    },
+    {
+      "id": "student_eligibility",
+      "name": "Certification of Student Eligibility",
+      "page": 16,
+      "weak": false
+    },
+    {
+      "id": "special_needs",
+      "name": "Special Needs Certification",
+      "page": 17,
+      "weak": false
+    },
+    {
+      "id": "income_calc",
+      "name": "Income Calculation Worksheet",
+      "page": 18,
+      "weak": false
+    },
+    {
+      "id": "employment_verif",
+      "name": "Employment Verification or Paystubs",
+      "page": 23,
+      "weak": false
+    },
+    {
+      "id": "child_support_cert",
+      "name": "Child Support / Alimony Certification",
+      "page": 25,
+      "weak": false
+    },
+    {
+      "id": "payment_history",
+      "name": "Payment History or AG 9L001",
+      "page": 26,
+      "weak": false
+    },
+    {
+      "id": "asset_cert",
+      "name": "Asset Certification (under $50,000)",
+      "page": 28,
+      "weak": false
+    },
+    {
+      "id": "tenant_selection_plan",
+      "name": "Tenant Selection Plan",
+      "page": 40,
+      "weak": false
+    }
+  ],
+  "outOfOrder": [],
+  "missing": [],
+  "advisories": {
+    "direction1": [],
+    "direction2": []
+  }
+}

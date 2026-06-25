@@ -1,0 +1,126 @@
+{
+  "pdf": "CCSR 1302 Herrera FF.pdf",
+  "pages": 57,
+  "checklist_page": 3,
+  "profile": {
+    "program": null,
+    "income": [
+      "employed",
+      "zero_income",
+      "non_employed",
+      "child_support"
+    ],
+    "conditions": [
+      "student",
+      "assets_under_50k"
+    ]
+  },
+  "present": [
+    {
+      "id": "household_cert",
+      "name": "Household Certification",
+      "page": 6,
+      "weak": true
+    },
+    {
+      "id": "tic",
+      "name": "Tenant Income Certification",
+      "page": 6,
+      "weak": false
+    },
+    {
+      "id": "release_consent",
+      "name": "Tenant Release and Consent",
+      "page": 10,
+      "weak": false
+    },
+    {
+      "id": "rights",
+      "name": "Tenant Rights and Resource Acknowledgment",
+      "page": 11,
+      "weak": false
+    },
+    {
+      "id": "application",
+      "name": "Application",
+      "page": 12,
+      "weak": false
+    },
+    {
+      "id": "supp_app",
+      "name": "Supplemental Application",
+      "page": 20,
+      "weak": false
+    },
+    {
+      "id": "student_eligibility",
+      "name": "Certification of Student Eligibility",
+      "page": 21,
+      "weak": false
+    },
+    {
+      "id": "income_calc",
+      "name": "Income Calculation Worksheet",
+      "page": 23,
+      "weak": false
+    },
+    {
+      "id": "zero_income",
+      "name": "Certification of Zero Income",
+      "page": 24,
+      "weak": false
+    },
+    {
+      "id": "non_employed",
+      "name": "Non-Employed Certification",
+      "page": 25,
+      "weak": false
+    },
+    {
+      "id": "employment_verif",
+      "name": "Employment Verification or Paystubs",
+      "page": 31,
+      "weak": false
+    },
+    {
+      "id": "child_support_cert",
+      "name": "Child Support / Alimony Certification",
+      "page": 33,
+      "weak": false
+    },
+    {
+      "id": "asset_cert",
+      "name": "Asset Certification (under $50,000)",
+      "page": 34,
+      "weak": false
+    },
+    {
+      "id": "tenant_selection_plan",
+      "name": "Tenant Selection Plan",
+      "page": 43,
+      "weak": false
+    }
+  ],
+  "outOfOrder": [],
+  "missing": [],
+  "advisories": {
+    "direction1": [],
+    "direction2": [
+      {
+        "id": "special_needs",
+        "name": "Special Needs Certification",
+        "page": 22
+      },
+      {
+        "id": "profit_loss",
+        "name": "Profit and Loss Statement",
+        "page": 52
+      },
+      {
+        "id": "bank_statement",
+        "name": "Bank Statement or Bank Verification",
+        "page": 35
+      }
+    ]
+  }
+}
